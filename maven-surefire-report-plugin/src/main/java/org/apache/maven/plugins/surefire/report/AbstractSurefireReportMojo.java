@@ -78,12 +78,6 @@ public abstract class AbstractSurefireReportMojo extends AbstractMavenReport {
     private File reportsDirectory;
 
     /**
-     * The projects in the reactor for aggregation report.
-     */
-    @Parameter(defaultValue = "${reactorProjects}", readonly = true)
-    private List<MavenProject> reactorProjects;
-
-    /**
      * Location of the Xrefs to link.
      */
     @Parameter(defaultValue = "${project.reporting.outputDirectory}/xref-test")
@@ -343,6 +337,10 @@ public abstract class AbstractSurefireReportMojo extends AbstractMavenReport {
     @Override
     protected MavenProject getProject() {
         return project;
+    }
+
+    protected List<MavenProject> getReactorProjects() {
+        return reactorProjects;
     }
 
     // TODO Review, especially Locale.getDefault()
